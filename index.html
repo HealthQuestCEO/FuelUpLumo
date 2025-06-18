@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🥦 Fuel Up Lumo – Nutrition Quest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #dff8f4;
+      padding: 2em;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #66bfad;
+    }
+    .food-input {
+      margin-top: 2em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    input[type="text"] {
+      padding: 1em;
+      font-size: 1em;
+      border: 2px solid #66bfad;
+      border-radius: 8px;
+    }
+    button {
+      padding: 0.75em;
+      background: #66bfad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #57a695;
+    }
+    .response-box {
+      margin-top: 2em;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5em;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .nutrition-bars {
+      margin-top: 1.5em;
+    }
+    .bar-label {
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+    .bar {
+      background: #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .bar-fill {
+      height: 20px;
+      background: #66bfad;
+      width: 0%;
+      transition: width 1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🥦 Fuel Up Lumo!</h1>
+    <p>Type what you ate, and help Lumo grow strong! 🐉</p>
+    <div class="food-input">
+      <input type="text" id="foodInput" placeholder="e.g., banana and yogurt" />
+      <button onclick="simulateAIResponse()">Fuel Lumo</button>
+    </div>
+    <div id="responseBox" class="response-box" style="display:none;">
+      <div id="aiText"></div>
+      <div class="nutrition-bars">
+        <div class="bar-label">Vitamin C</div>
+        <div class="bar"><div class="bar-fill" id="vitaminC"></div></div>
+        <div class="bar-label">Fiber</div>
+        <div class="bar"><div class="bar-fill" id="fiber"></div></div>
+        <div class="bar-label">Protein</div>
+        <div class="bar"><div class="bar-fill" id="protein"></div></div>
+        <div class="bar-label">Water</div>
+        <div class="bar"><div class="bar-fill" id="water"></div></div>
+        <div class="bar-label">Energy</div>
+        <div class="bar"><div class="bar-fill" id="energy"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function simulateAIResponse() {
+      const food = document.getElementById('foodInput').value.toLowerCase();
+      const aiText = document.getElementById('aiText');
+      const box = document.getElementById('responseBox');
+      let message = "";
+
+      // Simple interpretation (to be replaced with real GPT + Nutritionix response)
+      if (food.includes("banana") && food.includes("yogurt")) {
+        message = "🍌 The banana gave Lumo sparkly Vitamin C! The yogurt added protein for a strong tail! Great job! Lumo says: 'Woohoo! I feel ready to zoom!'";
+        updateBars({ vitaminC: 80, fiber: 30, protein: 60, water: 40, energy: 70 });
+      } else {
+        message = "Hmm! Lumo is curious about your snack. Let's add something colorful next!";
+        updateBars({ vitaminC: 20, fiber: 10, protein: 20, water: 10, energy: 30 });
+      }
+
+      aiText.textContent = message;
+      box.style.display = "block";
+    }
+
+    function updateBars(values) {
+      document.getElementById('vitaminC').style.width = values.vitaminC + '%';
+      document.getElementById('fiber').style.width = values.fiber + '%';
+      document.getElementById('protein').style.width = values.protein + '%';
+      document.getElementById('water').style.width = values.water + '%';
+      document.getElementById('energy').style.width = values.energy + '%';
+    }
+  </script>
+</body>
+</html>
