@@ -48,6 +48,7 @@
         }
         .pantry-selection {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
@@ -138,27 +139,28 @@
         <button class="cta-button" onclick="startGame()">Choose a food to help Lumo fly!</button>
     </div>
 
-    <div class="game-screen" id="game-screen">
+ <div class="game-screen" id="game-screen">
         <h1>Help Lumo Fly!</h1>
         <img id="lumo-game-image" src="Lumo--Talking-and-Pointing (2).gif" alt="Lumo the Dragon" class="lumo-image">
         <p>Current Coins: <span id="coin-count">0</span></p>
         <p id="feedback-message" class="feedback-message"></p>
 
-        <div class="nutrition-meters">
+  <div class="nutrition-meters">
             <div class="meter-container"><div class="meter-label">Vitamin A</div><div class="meter-bar"><div class="meter-fill" id="meter-a"></div></div></div>
             <div class="meter-container"><div class="meter-label">Vitamin C</div><div class="meter-bar"><div class="meter-fill" id="meter-c"></div></div></div>
             <div class="meter-container"><div class="meter-label">Fiber</div><div class="meter-bar"><div class="meter-fill" id="meter-fiber"></div></div></div>
             <div class="meter-container"><div class="meter-label">Protein</div><div class="meter-bar"><div class="meter-fill" id="meter-protein"></div></div></div>
             <div class="meter-container"><div class="meter-label">Water</div><div class="meter-bar"><div class="meter-fill" id="meter-water"></div></div></div>
         </div>
-
-        <div class="pantry-selection">
+    <div class="pantry-selection">
             <button class="food-category-button" onclick="showFoods('fruit')">Fruit</button>
             <button class="food-category-button" onclick="showFoods('veggie')">Veggie</button>
             <button class="food-category-button" onclick="showFoods('protein')">Protein</button>
+            <button class="food-category-button" onclick="showFoods('grain')">Grain</button>
+            <button class="food-category-button" onclick="showFoods('fiber')">Fiber</button>
         </div>
 
-        <div id="food-list" class="food-list"></div>
+ <div id="food-list" class="food-list"></div>
     </div>
 </div>
 
@@ -167,17 +169,52 @@
         'fruit': [
             { name: 'Apple', nutrients: { a: 10, c: 50, fiber: 25, protein: 5, water: 20 } },
             { name: 'Orange', nutrients: { a: 5, c: 70, fiber: 15, protein: 2, water: 30 } },
-            { name: 'Banana', nutrients: { a: 15, c: 20, fiber: 30, protein: 10, water: 15 } }
+            { name: 'Banana', nutrients: { a: 15, c: 20, fiber: 30, protein: 10, water: 15 } },
+            { name: 'Strawberries', nutrients: { a: 5, c: 60, fiber: 20, protein: 3, water: 25 } },
+            { name: 'Grapes', nutrients: { a: 5, c: 15, fiber: 10, protein: 1, water: 20 } },
+            { name: 'Blueberries', nutrients: { a: 10, c: 30, fiber: 25, protein: 2, water: 20 } },
+            { name: 'Kiwi', nutrients: { a: 10, c: 80, fiber: 40, protein: 5, water: 25 } },
+            { name: 'Mango', nutrients: { a: 40, c: 50, fiber: 30, protein: 5, water: 15 } }
         ],
         'veggie': [
             { name: 'Carrot', nutrients: { a: 80, c: 10, fiber: 20, protein: 5, water: 10 } },
             { name: 'Spinach', nutrients: { a: 50, c: 30, fiber: 15, protein: 15, water: 25 } },
-            { name: 'Broccoli', nutrients: { a: 30, c: 60, fiber: 30, protein: 20, water: 20 } }
+            { name: 'Broccoli', nutrients: { a: 30, c: 60, fiber: 30, protein: 20, water: 20 } },
+            { name: 'Bell Pepper', nutrients: { a: 20, c: 70, fiber: 10, protein: 5, water: 30 } },
+            { name: 'Sweet Potato', nutrients: { a: 90, c: 20, fiber: 35, protein: 10, water: 15 } },
+            { name: 'Kale', nutrients: { a: 60, c: 40, fiber: 25, protein: 20, water: 20 } },
+            { name: 'Cucumber', nutrients: { a: 5, c: 10, fiber: 5, protein: 2, water: 80 } },
+            { name: 'Tomatoes', nutrients: { a: 20, c: 30, fiber: 10, protein: 5, water: 40 } }
         ],
         'protein': [
-            { name: 'Chicken', nutrients: { a: 0, c: 0, fiber: 0, protein: 80, water: 10 } },
-            { name: 'Beans', nutrients: { a: 5, c: 5, fiber: 40, protein: 30, water: 15 } },
-            { name: 'Fish', nutrients: { a: 10, c: 0, fiber: 0, protein: 75, water: 20 } }
+            { name: 'Chicken Breast', nutrients: { a: 0, c: 0, fiber: 0, protein: 80, water: 10 } },
+            { name: 'Lentils', nutrients: { a: 5, c: 5, fiber: 40, protein: 30, water: 15 } },
+            { name: 'Salmon', nutrients: { a: 10, c: 0, fiber: 0, protein: 75, water: 20 } },
+            { name: 'Tofu', nutrients: { a: 0, c: 0, fiber: 10, protein: 60, water: 10 } },
+            { name: 'Eggs', nutrients: { a: 15, c: 0, fiber: 0, protein: 50, water: 10 } },
+            { name: 'Beef', nutrients: { a: 0, c: 0, fiber: 0, protein: 90, water: 5 } },
+            { name: 'Chickpeas', nutrients: { a: 5, c: 5, fiber: 35, protein: 35, water: 10 } },
+            { name: 'Greek Yogurt', nutrients: { a: 10, c: 5, fiber: 0, protein: 45, water: 5 } }
+        ],
+        'grain': [
+            { name: 'Oatmeal', nutrients: { a: 0, c: 0, fiber: 60, protein: 15, water: 10 } },
+            { name: 'Quinoa', nutrients: { a: 5, c: 0, fiber: 30, protein: 20, water: 5 } },
+            { name: 'Brown Rice', nutrients: { a: 0, c: 0, fiber: 25, protein: 10, water: 5 } },
+            { name: 'Whole Wheat Bread', nutrients: { a: 0, c: 0, fiber: 40, protein: 15, water: 5 } },
+            { name: 'Barley', nutrients: { a: 0, c: 0, fiber: 50, protein: 15, water: 5 } },
+            { name: 'Corn', nutrients: { a: 10, c: 10, fiber: 20, protein: 10, water: 10 } },
+            { name: 'Popcorn', nutrients: { a: 5, c: 0, fiber: 30, protein: 5, water: 5 } },
+            { name: 'Bulgur', nutrients: { a: 0, c: 0, fiber: 45, protein: 15, water: 5 } }
+        ],
+        'fiber': [
+            { name: 'Chia Seeds', nutrients: { a: 5, c: 0, fiber: 70, protein: 20, water: 10 } },
+            { name: 'Raspberries', nutrients: { a: 5, c: 40, fiber: 60, protein: 2, water: 20 } },
+            { name: 'Artichoke', nutrients: { a: 10, c: 20, fiber: 50, protein: 10, water: 15 } },
+            { name: 'Almonds', nutrients: { a: 5, c: 0, fiber: 45, protein: 25, water: 5 } },
+            { name: 'Avocado', nutrients: { a: 20, c: 20, fiber: 40, protein: 10, water: 25 } },
+            { name: 'Flaxseeds', nutrients: { a: 0, c: 0, fiber: 80, protein: 15, water: 5 } },
+            { name: 'Pears', nutrients: { a: 5, c: 15, fiber: 35, protein: 2, water: 20 } },
+            { name: 'Green Peas', nutrients: { a: 15, c: 20, fiber: 30, protein: 20, water: 10 } }
         ]
     };
 
@@ -243,7 +280,7 @@
                 if (nutritionLevels[nutrient] === 100 && !document.getElementById(`meter-${nutrient}`).classList.contains('vibrant')) {
                     document.getElementById(`meter-${nutrient}`).classList.add('vibrant');
                     anyNutrientReached100 = true;
-                    feedbackMessage.textContent += `Vitamin C helps Lumo sparkle! `;
+                    feedbackMessage.textContent += `Lumo's ${nutrient.charAt(0).toUpperCase() + nutrient.slice(1)} meter is full! `;
                     coins += 5;
                     coinCounter.textContent = coins;
                 }
@@ -266,7 +303,7 @@
 
     function lumoCheer() {
         // Simple animation placeholder
-        lumoGameImage.src = 'Lumo--Talking-and-Pointing (2).gif'; // Revert to talking/pointing
+        lumoGameImage.src = 'Lumo--Talking-and-Pointing (2).gif';
     }
 
     function lumoFly() {
