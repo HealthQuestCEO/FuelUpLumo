@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -139,20 +138,21 @@
         <button class="cta-button" onclick="startGame()">Choose a food to help Lumo fly!</button>
     </div>
 
- <div class="game-screen" id="game-screen">
+    <div class="game-screen" id="game-screen">
         <h1>Help Lumo Fly!</h1>
         <img id="lumo-game-image" src="Lumo--Talking-and-Pointing (2).gif" alt="Lumo the Dragon" class="lumo-image">
         <p>Current Coins: <span id="coin-count">0</span></p>
         <p id="feedback-message" class="feedback-message"></p>
 
-  <div class="nutrition-meters">
+        <div class="nutrition-meters">
             <div class="meter-container"><div class="meter-label">Vitamin A</div><div class="meter-bar"><div class="meter-fill" id="meter-a"></div></div></div>
             <div class="meter-container"><div class="meter-label">Vitamin C</div><div class="meter-bar"><div class="meter-fill" id="meter-c"></div></div></div>
             <div class="meter-container"><div class="meter-label">Fiber</div><div class="meter-bar"><div class="meter-fill" id="meter-fiber"></div></div></div>
             <div class="meter-container"><div class="meter-label">Protein</div><div class="meter-bar"><div class="meter-fill" id="meter-protein"></div></div></div>
             <div class="meter-container"><div class="meter-label">Water</div><div class="meter-bar"><div class="meter-fill" id="meter-water"></div></div></div>
         </div>
-    <div class="pantry-selection">
+
+        <div class="pantry-selection">
             <button class="food-category-button" onclick="showFoods('fruit')">Fruit</button>
             <button class="food-category-button" onclick="showFoods('veggie')">Veggie</button>
             <button class="food-category-button" onclick="showFoods('protein')">Protein</button>
@@ -160,7 +160,7 @@
             <button class="food-category-button" onclick="showFoods('fiber')">Fiber</button>
         </div>
 
- <div id="food-list" class="food-list"></div>
+        <div id="food-list" class="food-list"></div>
     </div>
 </div>
 
